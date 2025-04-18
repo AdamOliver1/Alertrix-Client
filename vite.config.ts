@@ -1,6 +1,7 @@
 import { defineConfig, loadEnv } from 'vite';
 import react from '@vitejs/plugin-react';
 import type { ConfigEnv } from 'vite';
+import { resolve } from 'path';
 
 // Define process types for TypeScript
 declare global {
@@ -38,6 +39,13 @@ export default defineConfig(({ mode }: ConfigEnv) => {
           target: serverUrl,
           changeOrigin: true,
           secure: false
+        }
+      }
+    },
+    build: {
+      rollupOptions: {
+        input: {
+          main: resolve(__dirname, 'index.html')
         }
       }
     }
