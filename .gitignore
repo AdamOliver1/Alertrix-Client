@@ -29,11 +29,9 @@ out/
 .eslintcache
 
 # dotenv environment variable files
-.env
-.env.test
-.env.local
-.env.*.local
-# Note: .env.development and .env.production are NOT ignored
+.env*
+!.env.example
+!.env.*.example
 
 # IDE specific files
 .idea/
