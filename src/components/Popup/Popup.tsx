@@ -10,7 +10,6 @@ export interface PopupProps {
   children?: ReactNode;
   footer?: ReactNode;
   icon?: ReactNode;
-  maxWidth?: number;
 }
 
 const Popup: React.FC<PopupProps> = ({
@@ -19,8 +18,7 @@ const Popup: React.FC<PopupProps> = ({
   onClose,
   children,
   footer,
-  icon,
-  maxWidth = 500
+  icon
 }) => {
   return (
     <Dialog

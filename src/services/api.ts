@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useErrorStore } from '../stores/errorStore';
-import { ApiError } from '../types/error';
 import { env } from '../config/env';
 
 const API_URL = env.api.url;

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { FaEdit, FaExclamationCircle, FaMapMarkerAlt, FaThermometerHalf, FaTrash, FaSearch } from 'react-icons/fa';
+import { FaMapMarkerAlt, FaThermometerHalf, FaSearch } from 'react-icons/fa';
 import Button from '../../../components/UI/Button';
 import { AlertStatus } from '../../../types/alert';
 import styles from '../Alerts.module.scss';
@@ -10,7 +10,6 @@ interface AlertsTableProps {
   alerts: AlertStatus[];
   onEdit: (alertId: string) => void;
   onDelete: (alertId: string) => void;
-  onCreateNew: () => void;
   loading?: boolean;
 }
 
@@ -18,7 +17,6 @@ const AlertsTable: React.FC<AlertsTableProps> = ({
   alerts,
   onEdit,
   onDelete,
-  onCreateNew,
   loading = false
 }) => {
   useEffect(() => {

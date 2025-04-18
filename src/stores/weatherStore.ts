@@ -31,11 +31,19 @@ export const useWeatherStore = create<WeatherState>((set, get) => ({
     set({ isLoading: true });
     try {
       const units = get().selectedUnits;
-      let weatherData = await weatherService.getCurrentWeather(location, units);
-      if(location.name){
-        weatherData = {...weatherData, name: location.name}
+      const weatherData = await weatherService.getCurrentWeather(location, units);
+      
+      if (weatherData) {
+        set({ 
+          currentWeather: { 
+            ...weatherData,
+            name: location.name || weatherData.name
+          }, 
+          isLoading: false 
+        });
+      } else {
+        set({ isLoading: false, error: "Failed to fetch weather data" });
       }
-      set({ currentWeather: weatherData, isLoading: false });
     } catch (error) {
       set({ isLoading: false });
       handleApiError(error);

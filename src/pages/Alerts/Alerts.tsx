@@ -176,7 +176,6 @@ const Alerts = () => {
           alerts={filteredAndSortedAlerts}
           onEdit={handleEditAlert}
           onDelete={handleDeleteAlert}
-          onCreateNew={handleCreateNew}
           loading={isLoadingStatuses}
         />
       );

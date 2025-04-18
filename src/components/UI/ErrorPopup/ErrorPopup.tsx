@@ -1,4 +1,3 @@
-import React from 'react';
 import { useErrorStore } from '../../../stores/errorStore';
 import { FaTimes } from 'react-icons/fa';
 import { useEscapeKey } from '../../../hooks';

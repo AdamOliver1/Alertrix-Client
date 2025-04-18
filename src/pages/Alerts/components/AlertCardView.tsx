@@ -1,5 +1,5 @@
 import React from 'react';
-import { FaLocationArrow, FaEdit, FaExclamationCircle, FaTrash, FaThermometerHalf, FaSearch } from 'react-icons/fa';
+import { FaLocationArrow, FaEdit, FaTrash, FaThermometerHalf, FaSearch } from 'react-icons/fa';
 import Button from '../../../components/UI/Button';
 import Card from '../../../components/UI/Card/Card';
 import { AlertStatus } from '../../../types/alert';

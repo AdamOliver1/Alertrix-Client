@@ -74,8 +74,6 @@ const SpaceBackground = () => {
   useAnimationFrame(() => {
     if (starsContainerRef.current) {
       const starElements = starsContainerRef.current.children;
-      const centerX = 0.5; // center of the screen
-      const centerY = 0.5; // center of the screen
       
       for (let i = 0; i < starElements.length; i++) {
         const star = stars[i];

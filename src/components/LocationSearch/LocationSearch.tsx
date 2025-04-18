@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useWeatherStore } from '../../stores/weatherStore';
 import { env } from '../../config/env';
 import { FaSearch, FaMapMarkerAlt } from 'react-icons/fa';
 import Button from '../UI/Button';
