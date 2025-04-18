@@ -1,0 +1,52 @@
+@use '../../../styles/variables/index' as *;
+@use '../../../styles/mixins/index' as mixins;
+
+.card {
+  @include mixins.space-container;
+  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cardTitle {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: $font-size-xl;
+  position: relative;
+  padding-bottom: 0.75rem;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-blue), transparent);
+    border-radius: 2px;
+  }
+}
+
+.cardContent {
+  color: var(--text-light);
+  font-size: $font-size-base;
+  line-height: 1.6;
+}
+
+.hoverable {
+  @include mixins.hover-lift;
+}
+
+.glow-blue {
+  @include mixins.glow-effect('blue');
+}
+
+.glow-purple {
+  @include mixins.glow-effect('purple');
+}
+
+.glow-teal {
+  @include mixins.glow-effect('teal');
+} 

@@ -1,0 +1,80 @@
+@use '../../styles/variables/index' as *;
+@use '../../styles/mixins/index' as mixins;
+
+.modalOverlay {
+  @include mixins.overlay;
+}
+
+.modal {
+  @include mixins.modal-container;
+  padding: 1.5rem;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  
+  @include mixins.custom-scrollbar;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modalTitle {
+  @include mixins.heading('h3');
+  @include mixins.gradient-text;
+}
+
+.closeButton {
+  padding: 0.5rem;
+  min-width: auto;
+  background: transparent;
+  border: none;
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    box-shadow: 0 0 10px rgba(67, 97, 238, 0.3);
+  }
+}
+
+.modalContent {
+  margin-top: 1rem;
+  color: var(--text-light);
+  
+  h3 {
+    color: var(--text-white);
+    margin-bottom: 0.75rem;
+  }
+  
+  p {
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+  
+  label {
+    @include mixins.form-label;
+  }
+  
+  input, textarea, select {
+    @include mixins.form-input;
+  }
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+} 

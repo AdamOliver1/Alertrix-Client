@@ -1,0 +1,18 @@
+@use '../styles/variables/index' as *;
+
+.appLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.mainContent {
+  flex: 1;
+  position: relative;
+  margin-top: var(--header-height);
+  margin-bottom: var(--footer-height);
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+  overflow-y: auto;
+} 

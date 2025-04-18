@@ -1,0 +1,60 @@
+@use '../variables/index' as *;
+
+// Base container styling with space theme
+@mixin space-container {
+  background: rgba(32, 32, 55, 0.8);
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// Hover effect for cards and interactive elements
+@mixin hover-lift {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+}
+
+// Glow effects for different accent colors
+@mixin glow-effect($color: 'blue') {
+  @if $color == 'blue' {
+    border-color: rgba(67, 97, 238, 0.3);
+    box-shadow: 0 4px 20px rgba(67, 97, 238, 0.2);
+    
+    &:hover {
+      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.3);
+    }
+  } @else if $color == 'purple' {
+    border-color: rgba(123, 44, 191, 0.3);
+    box-shadow: 0 4px 20px rgba(123, 44, 191, 0.2);
+    
+    &:hover {
+      box-shadow: 0 8px 25px rgba(123, 44, 191, 0.3);
+    }
+  } @else if $color == 'teal' {
+    border-color: rgba(44, 181, 181, 0.3);
+    box-shadow: 0 4px 20px rgba(44, 181, 181, 0.2);
+    
+    &:hover {
+      box-shadow: 0 8px 25px rgba(44, 181, 181, 0.3);
+    }
+  } @else if $color == 'error' {
+    border-color: rgba(230, 57, 70, 0.3);
+    box-shadow: 0 4px 20px rgba(230, 57, 70, 0.2);
+    
+    &:hover {
+      box-shadow: 0 8px 25px rgba(230, 57, 70, 0.3);
+    }
+  } @else if $color == 'success' {
+    border-color: rgba(44, 182, 125, 0.3);
+    box-shadow: 0 4px 20px rgba(44, 182, 125, 0.2);
+    
+    &:hover {
+      box-shadow: 0 8px 25px rgba(44, 182, 125, 0.3);
+    }
+  }
+} 

@@ -1,0 +1,171 @@
+// Brand colors
+$color-primary: #1a73e8;
+$color-secondary: #5f6368;
+$color-tertiary: #34a853;
+
+// State colors
+$color-success: #34a853;
+$color-warning: #fbbc04;
+$color-danger: #ea4335;
+$color-info: #3b82f6;
+
+// Light variants of state colors
+$color-success-light: #e6f4ea;
+$color-warning-light: #fef7e0;
+$color-danger-light: #fce8e6;
+$color-info-light: #e8f1fe;
+
+// Neutral colors
+$color-white: #ffffff;
+$color-gray-50: #f9fafb;
+$color-gray-100: #f8f9fa;
+$color-gray-200: #e9ecef;
+$color-gray-300: #dee2e6;
+$color-gray-400: #ced4da;
+$color-gray-500: #adb5bd;
+$color-gray-600: #6c757d;
+$color-gray-700: #495057;
+$color-gray-800: #343a40;
+$color-gray-900: #212529;
+$color-black: #000000;
+
+// Weather-specific colors
+$color-rain: #3b82f6;
+$color-snow: #e2e8f0;
+$color-sunny: #fbbf24;
+$color-cloudy: #94a3b8;
+$color-storm: #6366f1;
+$color-wind: #a3a3a3;
+
+// UI element colors
+$color-background: $color-white;
+$color-text: $color-gray-800;
+$color-border: $color-gray-300;
+$color-shadow: rgba($color-black, 0.1);
+
+// Space Theme Color Palette
+
+// Base colors
+$space-black: #0a0a12;
+$space-deep-blue: #111133;
+$space-gray: #1a1a2e;
+$space-light-gray: #2a2a40;
+$space-mid-gray: #32324A;
+$space-deep-gray: #1A1A2E;
+$space-header-bg: rgba(26, 26, 46, 0.7);
+
+// Text colors
+$text-white: #f8f9fa;
+$text-light: #e0e0e6;
+$text-muted: #a0a0b0;
+
+// Accent colors
+$accent-blue: #4f7aff;
+$accent-purple: #9933ff;
+$accent-teal: #3cd6d6;
+$accent-pink: #ff4499;
+
+// Functional colors
+$success: #2cb67d;
+$warning: #ff9f1c;
+$error: #e63946;
+$info: #4cc9f0;
+
+// Common transparency values
+$trans-border: rgba($text-white, 0.05);
+$trans-border-light: rgba($text-white, 0.1);
+$trans-card-bg: rgba(32, 32, 55, 0.8);
+$trans-dark-shadow: rgba($color-black, 0.3);
+$trans-darker-shadow: rgba($color-black, 0.4);
+
+// Accent transparency values
+$trans-blue-light: rgba($accent-blue, 0.15);
+$trans-blue-medium: rgba($accent-blue, 0.3);
+$trans-blue-strong: rgba($accent-blue, 0.5);
+$trans-error-light: rgba($error, 0.1);
+$trans-error-medium: rgba($error, 0.2);
+$trans-error-border: rgba($error, 0.3);
+$trans-success-light: rgba($success, 0.1);
+$trans-success-medium: rgba($success, 0.2);
+$trans-success-border: rgba($success, 0.3);
+
+// Glow effects
+$blue-glow: 0 0 12px rgba(79, 122, 255, 0.7);
+$purple-glow: 0 0 12px rgba(153, 51, 255, 0.7);
+$teal-glow: 0 0 12px rgba(60, 214, 214, 0.7);
+$error-glow: 0 0 12px rgba($error, 0.4);
+$success-glow: 0 0 12px rgba($success, 0.4);
+
+// Text shadow effects
+$blue-text-glow: 0 0 10px rgba(67, 97, 238, 0.4);
+$blue-text-glow-strong: 0 0 25px rgba(67, 97, 238, 0.7), 0 0 10px rgba(255, 255, 255, 0.4);
+$blue-text-glow-hover: 0 0 30px rgba(67, 97, 238, 0.9), 0 0 15px rgba(255, 255, 255, 0.6);
+$teal-text-glow: 0 0 10px rgba(44, 181, 181, 0.6);
+
+// Semi-transparent colors for overlays and cards
+$card-bg: rgba(26, 26, 46, 0.7);
+$overlay-bg: rgba(10, 10, 18, 0.85);
+
+// CSS Custom Properties (for use throughout the app)
+:root {
+  // Base colors
+  --space-black: #{$space-black};
+  --space-deep-blue: #{$space-deep-blue};
+  --space-gray: #{$space-gray};
+  --space-light-gray: #{$space-light-gray};
+  --space-mid-gray: #{$space-mid-gray};
+  --space-deep-gray: #{$space-deep-gray};
+  --space-header-bg: #{$space-header-bg};
+  
+  // Text colors
+  --text-white: #{$text-white};
+  --text-light: #{$text-light};
+  --text-muted: #{$text-muted};
+  
+  // Accent colors
+  --accent-blue: #{$accent-blue};
+  --accent-purple: #{$accent-purple};
+  --accent-teal: #{$accent-teal};
+  --accent-pink: #{$accent-pink};
+  
+  // Functional colors
+  --success: #{$success};
+  --warning: #{$warning};
+  --error: #{$error};
+  --info: #{$info};
+  
+  // Common transparency values
+  --trans-border: #{$trans-border};
+  --trans-border-light: #{$trans-border-light};
+  --trans-card-bg: #{$trans-card-bg};
+  --trans-dark-shadow: #{$trans-dark-shadow};
+  --trans-darker-shadow: #{$trans-darker-shadow};
+  
+  // Accent transparency values
+  --trans-blue-light: #{$trans-blue-light};
+  --trans-blue-medium: #{$trans-blue-medium};
+  --trans-blue-strong: #{$trans-blue-strong};
+  --trans-error-light: #{$trans-error-light};
+  --trans-error-medium: #{$trans-error-medium};
+  --trans-error-border: #{$trans-error-border};
+  --trans-success-light: #{$trans-success-light};
+  --trans-success-medium: #{$trans-success-medium};
+  --trans-success-border: #{$trans-success-border};
+  
+  // Glow effects
+  --blue-glow: #{$blue-glow};
+  --purple-glow: #{$purple-glow};
+  --teal-glow: #{$teal-glow};
+  --error-glow: #{$error-glow};
+  --success-glow: #{$success-glow};
+  
+  // Text shadow effects
+  --blue-text-glow: #{$blue-text-glow};
+  --blue-text-glow-strong: #{$blue-text-glow-strong};
+  --blue-text-glow-hover: #{$blue-text-glow-hover};
+  --teal-text-glow: #{$teal-text-glow};
+  
+  // Backgrounds
+  --card-bg: #{$card-bg};
+  --overlay-bg: #{$overlay-bg};
+} 

@@ -1,0 +1,302 @@
+@use './variables/index' as *;
+@use 'sass:color';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--text-white);
+  background-color: var(--space-black);
+  min-height: 100vh;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  color: var(--text-white);
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 2.5rem;
+  letter-spacing: -0.025em;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--text-white);
+  position: relative;
+  
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 0;
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+    border-radius: 3px;
+  }
+}
+
+h3 {
+  font-size: 1.5rem;
+  color: var(--text-light);
+}
+
+h4 {
+  font-size: 1.25rem;
+  color: var(--text-light);
+}
+
+p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: var(--text-light);
+}
+
+a {
+  color: var(--accent-blue);
+  text-decoration: none;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+  
+  &:hover {
+    color: var(--accent-purple);
+    text-shadow: var(--blue-glow);
+  }
+}
+
+/* Cards */
+.card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+  }
+  
+  &__title {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    color: var(--text-white);
+    font-weight: 700;
+  }
+  
+  &__content {
+    color: var(--text-light);
+  }
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 5px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: all 0.6s ease;
+  }
+  
+  &:hover::before {
+    left: 100%;
+  }
+  
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+  }
+  
+  /* Button variants */
+  &-primary {
+    background-color: var(--accent-blue);
+    color: white;
+    
+    &:hover {
+      background-color: color.adjust(#4f7aff, $lightness: -10%);
+      box-shadow: var(--blue-glow);
+    }
+  }
+  
+  &-secondary {
+    background-color: var(--accent-purple);
+    color: white;
+    
+    &:hover {
+      background-color: color.adjust(#9933ff, $lightness: -10%);
+      box-shadow: var(--purple-glow);
+    }
+  }
+  
+  &-outline {
+    background-color: transparent;
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue);
+    
+    &:hover {
+      background-color: rgba(79, 122, 255, 0.15);
+      box-shadow: var(--blue-glow);
+    }
+  }
+}
+
+/* Form elements */
+.form-control {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-white);
+  background-color: rgba(42, 42, 64, 0.5);
+  background-clip: padding-box;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  backdrop-filter: blur(5px);
+  
+  &:focus {
+    border-color: var(--accent-blue);
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.25);
+  }
+  
+  &::placeholder {
+    color: var(--text-muted);
+    opacity: 0.8;
+  }
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* Table styles */
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: var(--text-light);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 5px;
+  overflow: hidden;
+  
+  th, td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  
+  th {
+    background-color: rgba(42, 42, 64, 0.8);
+    color: var(--text-white);
+    font-weight: 600;
+    text-align: left;
+    border-bottom: 2px solid var(--accent-blue);
+  }
+  
+  tbody tr {
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+  
+  tbody tr:nth-child(odd) {
+    background-color: rgba(26, 26, 46, 0.5);
+  }
+  
+  tbody tr:last-child td {
+    border-bottom: none;
+  }
+}
+
+/* Utilities */
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
+
+.mb-1 { margin-bottom: 0.5rem; }
+.mb-2 { margin-bottom: 1rem; }
+.mb-3 { margin-bottom: 1.5rem; }
+.mb-4 { margin-bottom: 2rem; }
+
+.mt-1 { margin-top: 0.5rem; }
+.mt-2 { margin-top: 1rem; }
+.mt-3 { margin-top: 1.5rem; }
+.mt-4 { margin-top: 2rem; }
+
+.text-success { color: var(--success); }
+.text-warning { color: var(--warning); }
+.text-error { color: var(--error); }
+.text-info { color: var(--info); }
+
+/* Animations */
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 5px rgba(79, 122, 255, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(79, 122, 255, 0.8);
+  }
+}
+
+.glow-effect {
+  animation: glow 2s infinite;
+}
+
+/* Status indicators */
+.status-indicator {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+  
+  &.active { background-color: var(--success); }
+  &.warning { background-color: var(--warning); }
+  &.error { background-color: var(--error); }
+  &.inactive { background-color: var(--text-muted); }
+} 

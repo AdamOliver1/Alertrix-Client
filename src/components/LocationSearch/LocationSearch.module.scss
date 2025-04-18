@@ -1,0 +1,110 @@
+@use '../../styles/variables/index' as *;
+@use '../../styles/mixins/index' as mixins;
+@use 'sass:color';
+
+.searchSection {
+  margin-bottom: $space-8;
+}
+
+.searchForm {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.searchInputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.searchInput {
+  width: 100%;
+  height: 56px;
+  padding: $space-4 $space-12 $space-4 $space-6;
+  font-size: $font-size-base;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  background-color: rgba(32, 32, 55, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+  color: var(--text-white);
+  
+  &:focus {
+    outline: none;
+    border-color: rgba(67, 97, 238, 0.5);
+    box-shadow: 0 0 15px rgba(67, 97, 238, 0.3);
+  }
+  
+  &::placeholder {
+    color: var(--text-light);
+  }
+}
+
+.searchButton {
+  position: absolute !important;
+  right: $space-4 !important;
+  background: transparent !important;
+  border: none !important;
+  color: var(--accent-blue) !important;
+  font-size: $font-size-lg !important;
+  padding: $space-2 !important;
+  transition: all 0.3s ease !important;
+  
+  &:hover {
+    color: var(--accent-teal) !important;
+    transform: scale(1.1) !important;
+    background: transparent !important;
+  }
+}
+
+// Location suggestions dropdown
+.locationSuggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  background-color: rgba(32, 32, 55, 0.95);
+  margin-top: $space-2;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+  backdrop-filter: blur(10px);
+  
+  @include mixins.custom-scrollbar;
+}
+
+.suggestionItem {
+  padding: $space-3 $space-4;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  color: var(--text-white);
+  display: flex;
+  align-items: center;
+  
+  &:hover {
+    background-color: rgba(67, 97, 238, 0.15);
+  }
+  
+  &:not(:last-child) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+}
+
+.locationIcon {
+  color: var(--accent-teal);
+  margin-right: $space-3;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+
+.errorMessage {
+  color: var(--error);
+  margin-top: $space-2;
+  text-align: center;
+  font-size: $font-size-sm;
+  text-shadow: 0 0 10px rgba(230, 57, 70, 0.3);
+} 

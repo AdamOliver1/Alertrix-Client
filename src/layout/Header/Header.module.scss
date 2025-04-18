@@ -1,0 +1,125 @@
+@use '../../styles/variables/index' as *;
+
+.header {
+  background-color: var(--space-header-bg);
+  color: var(--text-white);
+  padding: 1rem 0;
+  box-shadow: 0 2px 15px var(--trans-dark-shadow);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  height: var(--header-height);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--trans-border);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--text-white);
+  text-decoration: none;
+  margin: 0;
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: var(--blue-text-glow-strong);
+  transition: text-shadow 0.3s ease;
+  
+  &:hover {
+    text-shadow: var(--blue-text-glow-hover);
+  }
+}
+
+.mainNav {
+  ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 1.5rem;
+  }
+
+  li {
+    position: relative;
+  }
+}
+
+.navItem {
+  position: relative;
+  
+  a {
+    color: var(--text-light);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    padding-bottom: 5px;
+    position: relative;
+    display: inline-block;
+    
+    &:hover {
+      color: var(--accent-teal);
+      text-shadow: var(--teal-text-glow);
+      
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: linear-gradient(90deg, var(--accent-teal), transparent);
+        border-radius: 2px;
+        transform: scaleX(0.7);
+        opacity: 0.7;
+        transition: all 0.2s ease;
+      }
+    }
+  }
+}
+
+.active {
+  a {
+    color: var(--accent-blue);
+    font-weight: 600;
+    text-shadow: var(--blue-text-glow);
+    
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent-blue), transparent);
+      border-radius: 2px;
+    }
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .headerContent {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .mainNav ul {
+    gap: 1rem;
+  }
+} 

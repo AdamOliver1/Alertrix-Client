@@ -1,0 +1,40 @@
+@use '../variables/index' as *;
+
+// Gradient text effect for headings
+@mixin gradient-text {
+  background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+}
+
+// Text styles for headings with options
+@mixin heading($level: 'h1') {
+  margin: 0;
+  color: var(--text-white);
+  font-weight: 600;
+  
+  @if $level == 'h1' {
+    font-size: $font-size-3xl;
+  } @else if $level == 'h2' {
+    font-size: $font-size-2xl;
+  } @else if $level == 'h3' {
+    font-size: $font-size-xl;
+  } @else if $level == 'h4' {
+    font-size: $font-size-lg;
+  }
+}
+
+// Text shadow effects
+@mixin text-glow($color: 'blue') {
+  @if $color == 'blue' {
+    text-shadow: 0 0 10px rgba(67, 97, 238, 0.4);
+  } @else if $color == 'purple' {
+    text-shadow: 0 0 10px rgba(123, 44, 191, 0.4);
+  } @else if $color == 'error' {
+    text-shadow: 0 0 10px rgba(230, 57, 70, 0.4);
+  } @else if $color == 'success' {
+    text-shadow: 0 0 10px rgba(44, 182, 125, 0.4);
+  }
+} 

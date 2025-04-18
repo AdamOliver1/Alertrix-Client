@@ -1,0 +1,29 @@
+// Base spacing unit
+$space-unit: 0.25rem;
+
+// Spacing scale
+$space-0: 0;
+$space-1: $space-unit;
+$space-2: $space-unit * 2;
+$space-3: $space-unit * 3;
+$space-4: $space-unit * 4;
+$space-5: $space-unit * 5;
+$space-6: $space-unit * 6;
+$space-8: $space-unit * 8;
+$space-10: $space-unit * 10;
+$space-12: $space-unit * 12;
+$space-16: $space-unit * 16;
+$space-20: $space-unit * 20;
+$space-24: $space-unit * 24;
+$space-32: $space-unit * 32;
+$space-40: $space-unit * 40;
+$space-48: $space-unit * 48;
+$space-56: $space-unit * 56;
+$space-64: $space-unit * 64;
+
+// Container widths
+$container-sm: 540px;
+$container-md: 720px;
+$container-lg: 960px;
+$container-xl: 1140px;
+$container-xxl: 1320px; 

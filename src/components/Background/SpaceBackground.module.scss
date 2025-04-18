@@ -1,0 +1,47 @@
+@use '../../styles/variables/index' as *;
+
+.spaceBackground {
+  position: fixed;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--space-black);
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--text-white);
+  will-change: transform;
+}
+
+.twinklingStar {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--text-white);
+  will-change: transform, opacity;
+  animation: twinkle infinite both;
+}
+
+.largeStar {
+  position: absolute;
+  border-radius: 50%;
+  background-color: var(--text-white);
+  will-change: transform, opacity, box-shadow;
+  animation: twinkle infinite both;
+  box-shadow: var(--blue-glow);
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}

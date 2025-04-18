@@ -1,0 +1,124 @@
+@use '../../../styles/variables/index' as *;
+
+.container {
+  margin-bottom: 1rem;
+}
+
+.label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-light);
+  font-weight: 500;
+  font-size: 0.95rem;
+}
+
+.inputWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.icon {
+  position: absolute;
+  left: 1rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+}
+
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  background-color: rgba(42, 42, 64, 0.5);
+  color: var(--text-white);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  
+  &::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+  }
+  
+  &.withIcon {
+    padding-left: 2.75rem;
+  }
+}
+
+.helperText {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.errorText {
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--error);
+}
+
+// Variants
+.default {
+  .input {
+    background-color: rgba(42, 42, 64, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+}
+
+.filled {
+  .input {
+    background-color: rgba(42, 42, 64, 0.8);
+    border: none;
+    
+    &:focus {
+      background-color: rgba(42, 42, 64, 0.95);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+  }
+}
+
+.outlined {
+  .input {
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    &:focus {
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+    }
+  }
+}
+
+.error {
+  .input {
+    border-color: var(--error);
+    
+    &:focus {
+      box-shadow: 0 0 0 3px rgba(230, 57, 70, 0.2);
+    }
+  }
+  
+  .label {
+    color: var(--error);
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+// States
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+} 

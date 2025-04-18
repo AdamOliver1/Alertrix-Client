@@ -1,0 +1,194 @@
+/* Utility classes */
+@use '../variables/index' as *;
+@use 'sass:map';
+
+// Display
+.d-none {
+  display: none !important;
+}
+
+.d-inline {
+  display: inline !important;
+}
+
+.d-inline-block {
+  display: inline-block !important;
+}
+
+.d-block {
+  display: block !important;
+}
+
+.d-flex {
+  display: flex !important;
+}
+
+.d-grid {
+  display: grid !important;
+}
+
+// Flex utilities
+.flex-row {
+  flex-direction: row !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
+.flex-wrap {
+  flex-wrap: wrap !important;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap !important;
+}
+
+.justify-content-start {
+  justify-content: flex-start !important;
+}
+
+.justify-content-end {
+  justify-content: flex-end !important;
+}
+
+.justify-content-center {
+  justify-content: center !important;
+}
+
+.justify-content-between {
+  justify-content: space-between !important;
+}
+
+.justify-content-around {
+  justify-content: space-around !important;
+}
+
+.align-items-start {
+  align-items: flex-start !important;
+}
+
+.align-items-end {
+  align-items: flex-end !important;
+}
+
+.align-items-center {
+  align-items: center !important;
+}
+
+.align-items-baseline {
+  align-items: baseline !important;
+}
+
+.align-items-stretch {
+  align-items: stretch !important;
+}
+
+// Spacing utilities
+@each $size, $value in (
+  0: $space-0,
+  1: $space-1,
+  2: $space-2,
+  3: $space-3,
+  4: $space-4,
+  5: $space-5,
+  6: $space-6,
+  8: $space-8,
+  10: $space-10,
+  12: $space-12,
+  16: $space-16,
+  20: $space-20,
+  24: $space-24,
+  32: $space-32,
+  40: $space-40,
+  48: $space-48
+) {
+  .m-#{$size} {
+    margin: $value !important;
+  }
+  
+  .mt-#{$size} {
+    margin-top: $value !important;
+  }
+  
+  .mr-#{$size} {
+    margin-right: $value !important;
+  }
+  
+  .mb-#{$size} {
+    margin-bottom: $value !important;
+  }
+  
+  .ml-#{$size} {
+    margin-left: $value !important;
+  }
+  
+  .mx-#{$size} {
+    margin-left: $value !important;
+    margin-right: $value !important;
+  }
+  
+  .my-#{$size} {
+    margin-top: $value !important;
+    margin-bottom: $value !important;
+  }
+  
+  .p-#{$size} {
+    padding: $value !important;
+  }
+  
+  .pt-#{$size} {
+    padding-top: $value !important;
+  }
+  
+  .pr-#{$size} {
+    padding-right: $value !important;
+  }
+  
+  .pb-#{$size} {
+    padding-bottom: $value !important;
+  }
+  
+  .pl-#{$size} {
+    padding-left: $value !important;
+  }
+  
+  .px-#{$size} {
+    padding-left: $value !important;
+    padding-right: $value !important;
+  }
+  
+  .py-#{$size} {
+    padding-top: $value !important;
+    padding-bottom: $value !important;
+  }
+}
+
+// Responsive display utilities
+@each $breakpoint in map.keys($breakpoints) {
+  @include media-breakpoint-up($breakpoint) {
+    .d-#{$breakpoint}-none {
+      display: none !important;
+    }
+    
+    .d-#{$breakpoint}-inline {
+      display: inline !important;
+    }
+    
+    .d-#{$breakpoint}-inline-block {
+      display: inline-block !important;
+    }
+    
+    .d-#{$breakpoint}-block {
+      display: block !important;
+    }
+    
+    .d-#{$breakpoint}-flex {
+      display: flex !important;
+    }
+    
+    .d-#{$breakpoint}-grid {
+      display: grid !important;
+    }
+  }
+} 

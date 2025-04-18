@@ -1,0 +1,81 @@
+@use '../variables/index' as *;
+
+// Base input styling
+@mixin form-input {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: rgba(40, 40, 70, 0.6);
+  color: var(--text-white);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.375rem;
+  transition: all 0.3s ease;
+  margin-bottom: 1rem;
+  
+  &:focus {
+    outline: none;
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+  }
+  
+  &::placeholder {
+    color: var(--text-muted);
+  }
+}
+
+// Form label styling
+@mixin form-label {
+  color: var(--text-light);
+  margin-bottom: 0.5rem;
+  display: block;
+  font-weight: 500;
+}
+
+// Form group (label + input) styling
+@mixin form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.25rem;
+}
+
+// Button styling for forms
+@mixin form-button($variant: 'primary') {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  
+  @if $variant == 'primary' {
+    background-color: rgba(67, 97, 238, 0.8);
+    color: var(--text-white);
+    border: 1px solid rgba(67, 97, 238, 0.3);
+    
+    &:hover {
+      background-color: rgba(67, 97, 238, 0.9);
+      box-shadow: 0 0 15px rgba(67, 97, 238, 0.3);
+    }
+  } @else if $variant == 'secondary' {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--text-white);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+    }
+  } @else if $variant == 'outline' {
+    background-color: transparent;
+    color: var(--text-light);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.05);
+      color: var(--text-white);
+    }
+  }
+} 
