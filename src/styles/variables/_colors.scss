@@ -90,17 +90,17 @@ $trans-success-medium: rgba($success, 0.2);
 $trans-success-border: rgba($success, 0.3);
 
 // Glow effects
-$blue-glow: 0 0 12px rgba(79, 122, 255, 0.7);
-$purple-glow: 0 0 12px rgba(153, 51, 255, 0.7);
-$teal-glow: 0 0 12px rgba(60, 214, 214, 0.7);
-$error-glow: 0 0 12px rgba($error, 0.4);
-$success-glow: 0 0 12px rgba($success, 0.4);
+$blue-glow: 0 0 0.75rem rgba(79, 122, 255, 0.7);
+$purple-glow: 0 0 0.75rem rgba(153, 51, 255, 0.7);
+$teal-glow: 0 0 0.75rem rgba(60, 214, 214, 0.7);
+$error-glow: 0 0 0.75rem rgba($error, 0.4);
+$success-glow: 0 0 0.75rem rgba($success, 0.4);
 
 // Text shadow effects
-$blue-text-glow: 0 0 10px rgba(67, 97, 238, 0.4);
-$blue-text-glow-strong: 0 0 25px rgba(67, 97, 238, 0.7), 0 0 10px rgba(255, 255, 255, 0.4);
-$blue-text-glow-hover: 0 0 30px rgba(67, 97, 238, 0.9), 0 0 15px rgba(255, 255, 255, 0.6);
-$teal-text-glow: 0 0 10px rgba(44, 181, 181, 0.6);
+$blue-text-glow: 0 0 0.625rem rgba(67, 97, 238, 0.4);
+$blue-text-glow-strong: 0 0 1.5625rem rgba(67, 97, 238, 0.7), 0 0 0.625rem rgba(255, 255, 255, 0.4);
+$blue-text-glow-hover: 0 0 1.875rem rgba(67, 97, 238, 0.9), 0 0 0.9375rem rgba(255, 255, 255, 0.6);
+$teal-text-glow: 0 0 0.625rem rgba(44, 181, 181, 0.6);
 
 // Semi-transparent colors for overlays and cards
 $card-bg: rgba(26, 26, 46, 0.7);

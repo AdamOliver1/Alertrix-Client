@@ -43,12 +43,12 @@ h2 {
   &::after {
     content: "";
     position: absolute;
-    bottom: -10px;
+    bottom: -0.625rem;
     left: 0;
-    width: 60px;
-    height: 3px;
+    width: 3.75rem;
+    height: 0.1875rem;
     background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-    border-radius: 3px;
+    border-radius: 0.1875rem;
   }
 }
 
@@ -82,17 +82,17 @@ a {
 /* Cards */
 .card {
   background: var(--card-bg);
-  border-radius: 10px;
+  border-radius: 0.625rem;
   padding: 1.5rem;
   margin-bottom: 1.5rem;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.3);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transform: translateY(-0.3125rem);
+    box-shadow: 0 0.5rem 1.5625rem rgba(0, 0, 0, 0.4);
   }
   
   &__title {
@@ -115,11 +115,11 @@ a {
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  border: 1px solid transparent;
+  border: 0.0625rem solid transparent;
   padding: 0.5rem 1rem;
   font-size: 1rem;
   line-height: 1.5;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
@@ -142,7 +142,7 @@ a {
   
   &:focus {
     outline: none;
-    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.3);
+    box-shadow: 0 0 0 0.1875rem rgba(67, 97, 238, 0.3);
   }
   
   /* Button variants */
@@ -168,7 +168,7 @@ a {
   
   &-outline {
     background-color: transparent;
-    border: 1px solid var(--accent-blue);
+    border: 0.0625rem solid var(--accent-blue);
     color: var(--accent-blue);
     
     &:hover {
@@ -188,15 +188,15 @@ a {
   color: var(--text-white);
   background-color: rgba(42, 42, 64, 0.5);
   background-clip: padding-box;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
+  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.3125rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(0.3125rem);
   
   &:focus {
     border-color: var(--accent-blue);
     outline: 0;
-    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.25);
+    box-shadow: 0 0 0 0.125rem rgba(67, 97, 238, 0.25);
   }
   
   &::placeholder {
@@ -219,13 +219,13 @@ label {
   color: var(--text-light);
   border-collapse: separate;
   border-spacing: 0;
-  border-radius: 5px;
+  border-radius: 0.3125rem;
   overflow: hidden;
   
   th, td {
     padding: 0.75rem;
     vertical-align: top;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.05);
   }
   
   th {
@@ -233,7 +233,7 @@ label {
     color: var(--text-white);
     font-weight: 600;
     text-align: left;
-    border-bottom: 2px solid var(--accent-blue);
+    border-bottom: 0.125rem solid var(--accent-blue);
   }
   
   tbody tr {
@@ -274,26 +274,26 @@ label {
 .text-info { color: var(--info); }
 
 /* Animations */
-@keyframes glow {
+@keyframes glowPulse {
   0%, 100% {
-    box-shadow: 0 0 5px rgba(79, 122, 255, 0.5);
+    box-shadow: 0 0 0.3125rem rgba(79, 122, 255, 0.5);
   }
   50% {
-    box-shadow: 0 0 20px rgba(79, 122, 255, 0.8);
+    box-shadow: 0 0 1.25rem rgba(79, 122, 255, 0.8);
   }
 }
 
 .glow-effect {
-  animation: glow 2s infinite;
+  animation: glowPulse 2s infinite;
 }
 
 /* Status indicators */
 .status-indicator {
   display: inline-block;
-  width: 10px;
-  height: 10px;
+  width: 0.625rem;
+  height: 0.625rem;
   border-radius: 50%;
-  margin-right: 5px;
+  margin-right: 0.3125rem;
   
   &.active { background-color: var(--success); }
   &.warning { background-color: var(--warning); }

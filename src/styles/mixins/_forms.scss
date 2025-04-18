@@ -7,7 +7,7 @@
   font-size: 1rem;
   background-color: rgba(40, 40, 70, 0.6);
   color: var(--text-white);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
   border-radius: 0.375rem;
   transition: all 0.3s ease;
   margin-bottom: 1rem;
@@ -15,7 +15,7 @@
   &:focus {
     outline: none;
     border-color: var(--accent-blue);
-    box-shadow: 0 0 0 2px rgba(67, 97, 238, 0.2);
+    box-shadow: 0 0 0 0.125rem rgba(67, 97, 238, 0.2);
   }
   
   &::placeholder {
@@ -53,25 +53,25 @@
   @if $variant == 'primary' {
     background-color: rgba(67, 97, 238, 0.8);
     color: var(--text-white);
-    border: 1px solid rgba(67, 97, 238, 0.3);
+    border: 0.0625rem solid rgba(67, 97, 238, 0.3);
     
     &:hover {
       background-color: rgba(67, 97, 238, 0.9);
-      box-shadow: 0 0 15px rgba(67, 97, 238, 0.3);
+      box-shadow: 0 0 0.9375rem rgba(67, 97, 238, 0.3);
     }
   } @else if $variant == 'secondary' {
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--text-white);
-    border: 1px solid rgba(255, 255, 255, 0.2);
+    border: 0.0625rem solid rgba(255, 255, 255, 0.2);
     
     &:hover {
       background-color: rgba(255, 255, 255, 0.15);
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 0.9375rem rgba(255, 255, 255, 0.1);
     }
   } @else if $variant == 'outline' {
     background-color: transparent;
     color: var(--text-light);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    border: 0.0625rem solid rgba(255, 255, 255, 0.1);
     
     &:hover {
       background-color: rgba(255, 255, 255, 0.05);

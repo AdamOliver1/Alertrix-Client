@@ -46,7 +46,7 @@
   align-items: center;
   gap: $space-2;
   width: auto;
-  max-width: 200px;
+  max-width: 12.5rem;
   
   @include media-breakpoint-up(md) {
     width: auto;
@@ -106,10 +106,10 @@
 }
 
 .alertIcon {
-  font-size: 48px;
+  font-size: 3rem;
   color: var(--error);
   margin-bottom: $space-4;
-  filter: drop-shadow(0 0 10px rgba(230, 57, 70, 0.5));
+  filter: drop-shadow(0 0 0.625rem rgba(230, 57, 70, 0.5));
 }
 
 .alertSummaryTitle {
@@ -117,7 +117,7 @@
   font-weight: $font-weight-semibold;
   color: var(--text-white);
   margin: 0;
-  text-shadow: 0 0 10px rgba(230, 57, 70, 0.4);
+  text-shadow: 0 0 0.625rem rgba(230, 57, 70, 0.4);
   
   // Remove any underline or border
   border-bottom: none;
@@ -144,11 +144,11 @@
   flex: 1;
   @include mixins.space-container;
   background: rgba(32, 32, 55, 0.8);
-  border-radius: 10px;
+  border-radius: 0.625rem;
   padding: $space-4;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.3);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
   
   @include media-breakpoint-up(lg) {
     flex: 3;
@@ -163,17 +163,17 @@
   flex: 1;
   @include mixins.space-container;
   background: rgba(32, 32, 55, 0.8);
-  border-radius: 10px;
+  border-radius: 0.625rem;
   overflow: hidden;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(0.625rem);
+  box-shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.3);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
   
   @include media-breakpoint-up(lg) {
     flex: 2;
-    height: 400px;
+    height: 25rem;
   }
   
   @include mixins.custom-scrollbar;
@@ -205,7 +205,7 @@
 .alertCardWrapper {
   cursor: pointer;
   padding: 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 0.0625rem solid rgba(255, 255, 255, 0.05);
   transition: background-color 0.2s;
   
   &:last-child {
@@ -224,7 +224,7 @@
     }
     
     .alertListItem {
-      border-left: 4px solid var(--accent-blue);
+      border-left: 0.25rem solid var(--accent-blue);
     }
   }
 }
@@ -233,7 +233,7 @@
   display: flex;
   flex-direction: column;
   padding: $space-4;
-  border-left: 4px solid transparent;
+  border-left: 0.25rem solid transparent;
   transition: border-left-color 0.2s;
 }
 
@@ -245,7 +245,7 @@
 
 .alertCardIcon {
   color: var(--error);
-  font-size: 16px;
+  font-size: 1rem;
   margin-right: $space-3;
   transition: color 0.2s;
 }
@@ -261,7 +261,7 @@
 .listItemContent {
   display: flex;
   flex-wrap: wrap;
-  margin-left: calc($space-3 + 16px); // Icon width + margin
+  margin-left: calc($space-3 + 1rem); // Icon width + margin
   margin-bottom: $space-1;
 }
 
@@ -275,12 +275,12 @@
 .infoIcon {
   color: var(--accent-teal);
   margin-right: $space-2;
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .infoText {
   color: var(--text-light);
-  font-size: 14px;
+  font-size: 0.875rem;
 }
 
 .listItemStatus {
@@ -289,13 +289,13 @@
 
 .triggeredBadge {
   display: inline-block;
-  padding: 2px 8px;
-  border-radius: 12px;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.75rem;
   background-color: rgba(230, 57, 70, 0.2);
   color: var(--error);
-  font-size: 12px;
+  font-size: 0.75rem;
   font-weight: 500;
-  box-shadow: 0 0 10px rgba(230, 57, 70, 0.2);
+  box-shadow: 0 0 0.625rem rgba(230, 57, 70, 0.2);
 }
 
 // All Clear section
@@ -309,10 +309,10 @@
 }
 
 .allClearIcon {
-  font-size: 64px;
+  font-size: 4rem;
   color: var(--success);
   margin-bottom: $space-6;
-  filter: drop-shadow(0 0 15px rgba(44, 182, 125, 0.5));
+  filter: drop-shadow(0 0 0.9375rem rgba(44, 182, 125, 0.5));
 }
 
 .allClearTitle {
@@ -325,7 +325,7 @@
 .allClearText {
   color: var(--text-light);
   font-size: $font-size-lg;
-  max-width: 600px;
+  max-width: 37.5rem;
 }
 
 .evaluationContent {
@@ -357,7 +357,7 @@
 }
 
 .evaluationConfirmationModal {
-  max-width: 450px;
+  max-width: 28.125rem;
   width: 100%;
 }
 
@@ -370,10 +370,10 @@
 
 .evaluationResult {
   background: rgba(40, 40, 70, 0.6);
-  border-radius: 8px;
+  border-radius: 0.5rem;
   padding: 1rem;
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 0.0625rem solid rgba(255, 255, 255, 0.1);
   
   p {
     margin: 0;

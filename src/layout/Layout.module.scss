@@ -15,4 +15,12 @@
   margin-bottom: var(--footer-height);
   min-height: calc(100vh - var(--header-height) - var(--footer-height));
   overflow-y: auto;
+}
+
+// Responsive styles for mobile
+@media (max-width: 48rem) {
+  .mainContent {
+    margin-top: 0;
+    min-height: calc(100vh - var(--footer-height));
+  }
 } 

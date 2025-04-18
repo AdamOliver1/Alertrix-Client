@@ -1,44 +1,44 @@
 .error-popup {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 1.25rem;
+  right: 1.25rem;
   z-index: 1000;
   animation: slide-in 0.3s ease-out forwards;
   
   &__content {
     background-color: #f8d7da;
     color: #721c24;
-    padding: 15px 45px 15px 20px;
-    border-radius: 5px;
-    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+    padding: 0.9375rem 2.8125rem 0.9375rem 1.25rem;
+    border-radius: 0.3125rem;
+    box-shadow: 0 0.1875rem 0.5rem rgba(0, 0, 0, 0.2);
     position: relative;
-    max-width: 450px;
+    max-width: 28.125rem;
   }
   
   &__message {
     font-weight: 500;
-    margin-right: 25px;
+    margin-right: 1.5625rem;
   }
   
   &__technical {
-    margin-top: 8px;
-    padding-top: 8px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+    padding-top: 0.5rem;
+    border-top: 0.0625rem solid rgba(0, 0, 0, 0.1);
     font-size: 0.85rem;
     color: #6c757d;
     white-space: pre-wrap;
     word-break: break-word;
-    max-height: 100px;
+    max-height: 6.25rem;
     overflow-y: auto;
   }
   
   &__close {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 0.625rem;
+    right: 0.625rem;
     background: transparent;
     border: none;
-    font-size: 14px;
+    font-size: 0.875rem;
     cursor: pointer;
     display: flex;
     align-items: center;

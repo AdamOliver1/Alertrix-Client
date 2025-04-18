@@ -10,11 +10,11 @@
   white-space: nowrap;
   vertical-align: middle;
   user-select: none;
-  border: 1px solid transparent;
+  border: 0.0625rem solid transparent;
   padding: 0.6rem 1.2rem;
   font-size: 0.95rem;
   line-height: 1.5;
-  border-radius: 6px;
+  border-radius: 0.375rem;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
@@ -53,64 +53,64 @@
 .primary {
   background-color: var(--accent-blue);
   color: white;
-  box-shadow: 0 4px 10px rgba(79, 122, 255, 0.3);
+  box-shadow: 0 0.25rem 0.625rem rgba(79, 122, 255, 0.3);
   
   &:hover:not(:disabled) {
     background-color: #6490ff;
-    box-shadow: 0 6px 15px rgba(79, 122, 255, 0.5);
-    transform: translateY(-2px);
+    box-shadow: 0 0.375rem 0.9375rem rgba(79, 122, 255, 0.5);
+    transform: translateY(-0.125rem);
   }
   
   &:focus {
-    box-shadow: 0 0 0 3px rgba(79, 122, 255, 0.4);
+    box-shadow: 0 0 0 0.1875rem rgba(79, 122, 255, 0.4);
   }
 }
 
 .secondary {
   background-color: var(--accent-purple);
   color: white;
-  box-shadow: 0 4px 10px rgba(153, 51, 255, 0.3);
+  box-shadow: 0 0.25rem 0.625rem rgba(153, 51, 255, 0.3);
   
   &:hover:not(:disabled) {
     background-color: #ad5cff;
-    box-shadow: 0 6px 15px rgba(153, 51, 255, 0.5);
-    transform: translateY(-2px);
+    box-shadow: 0 0.375rem 0.9375rem rgba(153, 51, 255, 0.5);
+    transform: translateY(-0.125rem);
   }
   
   &:focus {
-    box-shadow: 0 0 0 3px rgba(153, 51, 255, 0.4);
+    box-shadow: 0 0 0 0.1875rem rgba(153, 51, 255, 0.4);
   }
 }
 
 .teal {
   background-color: var(--accent-teal);
   color: white;
-  box-shadow: 0 4px 10px rgba(60, 214, 214, 0.3);
+  box-shadow: 0 0.25rem 0.625rem rgba(60, 214, 214, 0.3);
   
   &:hover:not(:disabled) {
     background-color: #4fe7e7;
-    box-shadow: 0 6px 15px rgba(60, 214, 214, 0.5);
-    transform: translateY(-2px);
+    box-shadow: 0 0.375rem 0.9375rem rgba(60, 214, 214, 0.5);
+    transform: translateY(-0.125rem);
   }
   
   &:focus {
-    box-shadow: 0 0 0 3px rgba(60, 214, 214, 0.4);
+    box-shadow: 0 0 0 0.1875rem rgba(60, 214, 214, 0.4);
   }
 }
 
 .outline {
   background-color: transparent;
-  border: 1px solid var(--accent-blue);
+  border: 0.0625rem solid var(--accent-blue);
   color: var(--accent-blue);
   
   &:hover:not(:disabled) {
     background-color: rgba(79, 122, 255, 0.15);
-    box-shadow: 0 4px 10px rgba(79, 122, 255, 0.3);
-    transform: translateY(-2px);
+    box-shadow: 0 0.25rem 0.625rem rgba(79, 122, 255, 0.3);
+    transform: translateY(-0.125rem);
   }
   
   &:focus {
-    box-shadow: 0 0 0 3px rgba(79, 122, 255, 0.2);
+    box-shadow: 0 0 0 0.1875rem rgba(79, 122, 255, 0.2);
   }
 }
 
@@ -143,12 +143,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 0.25rem;
   }
   
   .loadingDot {
-    width: 6px;
-    height: 6px;
+    width: 0.375rem;
+    height: 0.375rem;
     background-color: currentColor;
     border-radius: 50%;
     opacity: 0.7;
@@ -185,10 +185,10 @@
 
 @keyframes glowPulse {
   0%, 100% {
-    box-shadow: 0 4px 10px rgba(79, 122, 255, 0.3);
+    box-shadow: 0 0.25rem 0.625rem rgba(79, 122, 255, 0.3);
   }
   50% {
-    box-shadow: 0 4px 20px rgba(79, 122, 255, 0.6);
+    box-shadow: 0 0.25rem 1.25rem rgba(79, 122, 255, 0.6);
   }
 }
 

@@ -1,44 +1,42 @@
-@use '../../styles/variables/index.scss'  as *;
+@use '../../styles/variables/index' as *;
 
 
 .mapContainer {
-  height: 400px;
+  height: 25rem;
   width: 100%;
   border-radius: $space-3;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 .mapError {
-  height: 400px;
+  height: 25rem;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: $color-gray-100;
-  color: $color-danger;
-  text-align: center;
-  padding: $space-6;
+  flex-direction: column;
+  color: var(--error);
+  background-color: rgba(32, 32, 55, 0.6);
   border-radius: $space-3;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.1);
 }
 
 .marker {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   background-color: $color-danger;
-  border: 2px solid white;
+  border: 0.125rem solid white;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 0.625rem rgba(0, 0, 0, 0.3);
   transition: transform 0.2s ease, background-color 0.2s ease;
 
   &:hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
   }
 
-  &.selected {
+  &.active {
     background-color: $color-primary;
     transform: scale(1.2);
-    z-index: 2;
   }
 } 

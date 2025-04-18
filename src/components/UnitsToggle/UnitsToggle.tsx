@@ -37,7 +37,7 @@ const UnitsToggle: React.FC<UnitsToggleProps> = ({
     >
       <span>{units === 'imperial' ? '°F' : '°C'}</span>
       <FaExchangeAlt style={{ 
-        margin: '0 8px', 
+        margin: '0 0.5rem', 
         fontSize: '0.8em',
         transition: 'transform 0.3s ease, color 0.3s ease'
       }} />

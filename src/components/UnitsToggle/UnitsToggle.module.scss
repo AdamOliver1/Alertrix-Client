@@ -1,47 +1,42 @@
 @use '../../styles/variables/index' as *;
 
 .unitsToggle {
-  border-radius: 30px !important;
-  min-width: 90px;
+  border-radius: 1.875rem !important;
+  min-width: 5.625rem;
   background-color: white !important;
-  border: 1px solid $color-gray-200 !important;
+  border: 0.0625rem solid $color-gray-200 !important;
   color: $color-gray-800 !important;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, 0.05) !important;
   transition: all 0.3s ease !important;
   font-weight: $font-weight-medium !important;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.03125rem;
   display: flex !important;
   align-items: center !important;
   justify-content: center !important;
-  padding: 0.5rem 1rem !important;
   
-  span {
-    font-size: 1.1em;
-    
-    &:first-child {
-      color: $color-primary;
-    }
-    
-    &:last-child {
-      color: $color-gray-700;
-    }
+  &__label {
+    font-size: $font-size-sm !important;
+    display: flex !important;
+    align-items: center !important;
+  }
+  
+  &__group {
+    display: inline-flex !important;
+    align-items: center !important;
+    position: relative !important;
+    border-radius: 1.875rem !important;
+    overflow: hidden !important;
   }
   
   &:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12) !important;
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.12) !important;
     border-color: $color-gray-300 !important;
-    background-color: rgba($color-primary, 0.05) !important;
-    
-    svg {
-      transform: rotate(180deg);
-      color: $color-primary;
-    }
   }
   
   &:active {
     transform: translateY(0);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.08) !important;
   }
 }
 

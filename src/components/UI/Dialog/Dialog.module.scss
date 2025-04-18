@@ -1,3 +1,6 @@
+@use '../../../styles/variables/index' as *;
+@use '../../../styles/mixins/index' as mixins;
+
 .overlay {
   position: fixed;
   top: 0;
@@ -14,7 +17,7 @@
 .content {
   background-color: white;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
   max-width: 90%;
   max-height: 90%;
   overflow: auto;
@@ -43,4 +46,38 @@
   &:focus {
     outline: none;
   }
+}
+
+.dialogBackdrop {
+  @include mixins.overlay;
+}
+
+.dialog {
+  background: rgba(32, 32, 55, 0.95);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  width: 100%;
+}
+
+.dialogHeader {
+  margin-bottom: 1rem;
+}
+
+.dialogTitle {
+  font-size: $font-size-xl;
+  color: var(--text-white);
+  margin: 0;
+}
+
+.dialogContent {
+  margin-bottom: 1.5rem;
+  color: var(--text-light);
+}
+
+.dialogActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
 } 

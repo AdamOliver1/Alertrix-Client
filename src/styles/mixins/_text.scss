@@ -29,12 +29,12 @@
 // Text shadow effects
 @mixin text-glow($color: 'blue') {
   @if $color == 'blue' {
-    text-shadow: 0 0 10px rgba(67, 97, 238, 0.4);
+    text-shadow: 0 0 0.625rem rgba(67, 97, 238, 0.4);
   } @else if $color == 'purple' {
-    text-shadow: 0 0 10px rgba(123, 44, 191, 0.4);
+    text-shadow: 0 0 0.625rem rgba(123, 44, 191, 0.4);
   } @else if $color == 'error' {
-    text-shadow: 0 0 10px rgba(230, 57, 70, 0.4);
+    text-shadow: 0 0 0.625rem rgba(230, 57, 70, 0.4);
   } @else if $color == 'success' {
-    text-shadow: 0 0 10px rgba(44, 182, 125, 0.4);
+    text-shadow: 0 0 0.625rem rgba(44, 182, 125, 0.4);
   }
 } 

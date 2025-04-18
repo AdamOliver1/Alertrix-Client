@@ -34,14 +34,26 @@ export const mapboxService = {
       return [];
     }
 
-    const endpoint = `${env.mapbox.apiUrl}/${encodeURIComponent(query)}.json?access_token=${
-      env.mapbox.accessToken
-    }&types=${types.join(',')}`;
+    try {
+      const endpoint = `${env.mapbox.apiUrl}/${encodeURIComponent(query)}.json?access_token=${
+        env.mapbox.accessToken
+      }&types=${types.join(',')}`;
 
-    const response = await fetch(endpoint);
-    const data = await response.json() as GeocodingResponse;
-
-    return data.features || [];
+      const response = await fetch(endpoint);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Mapbox API error:', response.status, errorText);
+        throw new Error(`Mapbox API error: ${response.status}`);
+      }
+      
+      const data = await response.json() as GeocodingResponse;
+      return data.features || [];
+    } catch (error) {
+      console.error('Error searching locations:', error);
+      // Return empty array instead of throwing to prevent breaking UI
+      return [];
+    }
   },
 
   /**
@@ -60,27 +72,44 @@ export const mapboxService = {
       throw new Error('Mapbox Access Token is not defined');
     }
 
-    const endpoint = `${env.mapbox.apiUrl}/${longitude},${latitude}.json?access_token=${
-      env.mapbox.accessToken
-    }&types=${types.join(',')}`;
+    try {
+      const endpoint = `${env.mapbox.apiUrl}/${longitude},${latitude}.json?access_token=${
+        env.mapbox.accessToken
+      }&types=${types.join(',')}`;
 
-    const response = await fetch(endpoint);
-    const data = await response.json() as GeocodingResponse;
+      const response = await fetch(endpoint);
+      
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Mapbox API error:', response.status, errorText);
+        throw new Error(`Mapbox API error: ${response.status}`);
+      }
+      
+      const data = await response.json() as GeocodingResponse;
 
-    if (data.features && data.features.length > 0) {
+      if (data.features && data.features.length > 0) {
+        return {
+          name: data.features[0].place_name,
+          lat: latitude,
+          lon: longitude
+        };
+      }
+      
+      // Return basic location if no features found
       return {
-        name: data.features[0].place_name,
+        name: `${latitude.toFixed(2)}, ${longitude.toFixed(2)}`,
+        lat: latitude,
+        lon: longitude
+      };
+    } catch (error) {
+      console.error('Error reverse geocoding:', error);
+      // Return basic location info instead of throwing
+      return {
+        name: `${latitude.toFixed(2)}, ${longitude.toFixed(2)}`,
         lat: latitude,
         lon: longitude
       };
     }
-
-    // Return basic location if no features found
-    return {
-      name: `${latitude.toFixed(2)}, ${longitude.toFixed(2)}`,
-      lat: latitude,
-      lon: longitude
-    };
   },
 
   /**
@@ -89,11 +118,21 @@ export const mapboxService = {
    * @returns Location object
    */
   featureToLocation(feature: MapboxFeature): Location {
-    const [lon, lat] = feature.geometry.coordinates;
-    return {
-      name: feature.place_name,
-      lat,
-      lon
-    };
+    try {
+      const [lon, lat] = feature.geometry.coordinates;
+      return {
+        name: feature.place_name,
+        lat,
+        lon
+      };
+    } catch (error) {
+      console.error('Error converting feature to location:', error);
+      // Return default location to prevent UI breaks
+      return {
+        name: 'Unknown location',
+        lat: 0,
+        lon: 0
+      };
+    }
   }
 }; 
