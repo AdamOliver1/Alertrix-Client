@@ -20,7 +20,6 @@ const AlertsTable: React.FC<AlertsTableProps> = ({
   loading = false
 }) => {
   useEffect(() => {
-    console.log('Alerts loaded:', alerts);
   }, [alerts]);
 
   if (loading) {
