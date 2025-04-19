@@ -33,9 +33,6 @@ Visit [https://alertrix-client.vercel.app/](https://alertrix-client.vercel.app/)
 
 ## Project Details
 
-### Source
-- **Repository**: [https://github.com/AdamOliver1/Alertrix-Client](https://github.com/yourusername/weather-alert-system)
-
 ### Features
 - Real-time weather monitoring with interactive maps
 - Custom weather alert creation and management
