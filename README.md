@@ -12,7 +12,7 @@ Visit [https://alertrix-client.vercel.app/](https://alertrix-client.vercel.app/)
 1. **Clone the repository**
    ```bash
    git clone https://github.com/AdamOliver1/Alertrix-Client.git
-   cd Alert-Client/frontend
+   cd Alert-Client
    ```
 
 2. **Install dependencies**
