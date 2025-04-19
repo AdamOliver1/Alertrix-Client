@@ -12,7 +12,7 @@ Visit [https://alertrix-client.vercel.app/](https://alertrix-client.vercel.app/)
 1. **Clone the repository**
    ```bash
    git clone https://github.com/AdamOliver1/Alertrix-Client.git
-   cd weather-alert-system/frontend
+   cd Alert-Client/frontend
    ```
 
 2. **Install dependencies**
