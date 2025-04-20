@@ -13,7 +13,7 @@ type ViewMode = 'cards' | 'table';
 
 const Alerts = () => {
   const [showForm, setShowForm] = useState(false);
-  const [viewMode, setViewMode] = useState<ViewMode>('table'); // Default to table view with new theme
+  const [viewMode, setViewMode] = useState<ViewMode>('cards'); // Default to cards view
   const [selectedAlert, setSelectedAlert] = useState<Alert | undefined>(undefined);
   const [deleteConfirmation, setDeleteConfirmation] = useState({
     isOpen: false,
