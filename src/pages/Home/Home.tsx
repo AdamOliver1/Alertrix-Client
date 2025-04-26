@@ -1,39 +1,46 @@
 import { useState, useEffect, useMemo } from 'react';
-import { FaWind, FaDroplet } from 'react-icons/fa6';
-import { WiHumidity } from 'react-icons/wi';
-import { getWeatherIcon, getIconSrc, isDaytime } from '../../utils/weatherIcons';
 import { getUserLocation, getDefaultLocation } from '../../utils/location';
 import Loader from '../../components/Loader/Loader';
-import UnitsToggle, { Units } from '../../components/UnitsToggle';
-import LocationSearch from '../../components/LocationSearch/LocationSearch';
 import { useWeatherStore } from '../../stores/weatherStore';
+import { useErrorStore } from '../../stores/errorStore';
+import ErrorPopup from '../../components/UI/ErrorPopup/ErrorPopup';
 import { Location } from '../../types/weather';
+import { WeatherCard, NoDataPlaceholder, SearchBar } from './components';
+import { Units } from '../../components/UnitsToggle';
 import styles from './Home.module.scss';
 
 const Home = () => {
   const { fetchWeather, currentWeather, isLoading, selectedUnits } = useWeatherStore();
+  const { showError } = useErrorStore();
   const [units, setUnits] = useState<Units>(selectedUnits);
+  const [hasAttemptedLoad, setHasAttemptedLoad] = useState(false);
   
   // Get user's location on component mount
   useEffect(() => {
     const initializeLocation = async () => {
-      const userLocation = await getUserLocation();
-      if (userLocation) {
-        fetchWeather(userLocation);
-      } else {
-        fetchWeather(getDefaultLocation());
+      try {
+        const userLocation = await getUserLocation();
+        if (userLocation) {
+          await fetchWeather(userLocation);
+        } else {
+          await fetchWeather(getDefaultLocation());
+        }
+      } catch (error) {
+        showError('Failed to get location', 'Could not determine your location. Showing default weather data.');
+        await fetchWeather(getDefaultLocation());
+      } finally {
+        setHasAttemptedLoad(true);
       }
     };
     
     initializeLocation();
-  }, [fetchWeather]);
+  }, [fetchWeather, showError]);
 
   // Keep local units state in sync with store
   useEffect(() => {
     setUnits(selectedUnits);
   }, [selectedUnits]);
 
-  
   // Format the current date
   const formattedDate = useMemo(() => {
     return new Date().toLocaleString('en-US', {
@@ -46,7 +53,10 @@ const Home = () => {
 
   // Handle location selection from the search component
   const handleLocationSelect = (location: Location) => {
-    fetchWeather(location);
+    setHasAttemptedLoad(false);
+    fetchWeather(location).finally(() => {
+      setHasAttemptedLoad(true);
+    });
   };
 
   // Function to toggle temperature units
@@ -54,94 +64,32 @@ const Home = () => {
     useWeatherStore.getState().setUnits(newUnits);
   };
   
-  // Get weather icon based on current weather code
-  const weatherIcon = useMemo(() => {
-    if (!currentWeather) return isDaytime() ? 'clear_day' : 'clear_night';
-    return getWeatherIcon(currentWeather.weatherCode, isDaytime());
-  }, [currentWeather]);
-
-  // Function to render the appropriate weather icon
-  const renderWeatherIcon = () => {
+  // Render content based on loading and data state
+  const renderContent = () => {
+    if (isLoading || !hasAttemptedLoad) {
+      return <Loader />;
+    }
+    
+    if (!currentWeather) {
+      return <NoDataPlaceholder />;
+    }
+    
     return (
-      <img 
-        src={getIconSrc(weatherIcon)} 
-        alt={`Weather: ${weatherIcon.replace('_', ' ')}`} 
-        className={styles.weatherIcon} 
+      <WeatherCard 
+        weatherData={currentWeather}
+        formattedDate={formattedDate}
+        units={units}
+        onUnitsToggle={handleUnitsToggle}
       />
     );
   };
 
   return (
     <div className={styles.homePage}>
+      <ErrorPopup />
       <div className="container">
-        <div className={styles.searchBar}>
-          <LocationSearch 
-            onLocationSelect={handleLocationSelect}
-          />
-        </div>
-
-        {isLoading || !currentWeather ? (
-          <Loader />
-        ) : (
-          <div className={styles.weatherCard}>
-            <div className={styles.weatherCardHeader}>
-              <h2 className={styles.locationName}>{currentWeather?.name}</h2>
-              <p className={styles.dateTime}>{formattedDate}</p>
-              <UnitsToggle 
-                units={units}
-                onToggle={handleUnitsToggle}
-                isAbsolute={true}
-                isResponsive={true}
-              />
-            </div>
-            
-            <div className={styles.weatherCardContent}>
-              <div className={styles.weatherMain}>
-                <div className={styles.weatherIconContainer}>
-                  {renderWeatherIcon()}
-                </div>
-                <div className={styles.temperatureContainer}>
-                  <span className={styles.temperature}>
-                    {Math.round(currentWeather.temperature)}°
-                    {units === 'imperial' ? 'F' : 'C'}
-                  </span>
-                </div>
-              </div>
-              
-              <div className={styles.weatherDetails}>
-                <div className={styles.detailItem}>
-                  <div className={styles.detailLabel}>
-                    <FaWind className={styles.detailIcon} />
-                    <span>Wind</span>
-                  </div>
-                  <div className={styles.detailValue}>
-                    {Math.round(currentWeather.windSpeed)} {units === 'imperial' ? 'mph' : 'km/h'}
-                  </div>
-                </div>
-                
-                <div className={styles.detailItem}>
-                  <div className={styles.detailLabel}>
-                    <FaDroplet className={styles.detailIcon} />
-                    <span>Precipitation</span>
-                  </div>
-                  <div className={styles.detailValue}>
-                    {currentWeather.precipitationProbability}%
-                  </div>
-                </div>
-                
-                <div className={styles.detailItem}>
-                  <div className={styles.detailLabel}>
-                    <WiHumidity className={styles.detailIcon} />
-                    <span>Humidity</span>
-                  </div>
-                  <div className={styles.detailValue}>
-                    {Math.round(currentWeather.humidity)}%
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        )}
+        <SearchBar onLocationSelect={handleLocationSelect} />
+        {renderContent()}
       </div>
     </div>
   );

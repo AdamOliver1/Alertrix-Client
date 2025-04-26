@@ -12,8 +12,6 @@ interface WeatherState {
   
   // Actions
   fetchWeather: (location: Location) => Promise<void>;
-  addLocation: (location: Location) => void;
-  removeLocation: (locationId: string) => void;
   setUnits: (units: 'metric' | 'imperial') => void;
   clearError: () => void;
 }
@@ -50,30 +48,6 @@ export const useWeatherStore = create<WeatherState>((set, get) => ({
     }
   },
   
-  addLocation: (location: Location) => {
-    set(state => {
-      // Check if location already exists to avoid duplicates
-      const exists = state.savedLocations.some(
-        loc => loc.lat === location.lat && loc.lon === location.lon
-      );
-      
-      if (exists) return state;
-      
-      return {
-        savedLocations: [...state.savedLocations, location]
-      };
-    });
-  },
-  
-  removeLocation: (locationId: string) => {
-    set(state => ({
-      savedLocations: state.savedLocations.filter(location => {
-        // Create a unique identifier from lat and lon since Location may not have an id
-        const locationKey = `${location.lat},${location.lon}`;
-        return locationKey !== locationId;
-      })
-    }));
-  },
   
   setUnits: (units: 'metric' | 'imperial') => {
     const currentWeather = get().currentWeather;
