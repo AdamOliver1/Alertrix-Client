@@ -2,31 +2,35 @@ import { create } from 'zustand';
 import { WeatherData, Location } from '../types/weather';
 import { weatherService } from '../services/weatherService';
 import { handleApiError } from '../services/errorHandler';
+import { useErrorStore } from './errorStore';
 
 interface WeatherState {
   currentWeather: WeatherData | null;
-  savedLocations: Location[];
   isLoading: boolean;
-  error: string | null;
   selectedUnits: 'metric' | 'imperial';
+  lastFetchedLocation: string | null; // Used for request deduplication
   
   // Actions
   fetchWeather: (location: Location) => Promise<void>;
   setUnits: (units: 'metric' | 'imperial') => void;
-  clearError: () => void;
 }
 
 export const useWeatherStore = create<WeatherState>((set, get) => ({
   // Initial state
   currentWeather: null,
-  savedLocations: [],
   isLoading: false,
-  error: null,
   selectedUnits: 'metric',
+  lastFetchedLocation: null,
   
   // Actions
   fetchWeather: async (location: Location) => {
-    set({ isLoading: true });
+    // Check if we're already fetching this exact location to prevent duplicate calls
+    const locationKey = `${location.lat},${location.lon}`;
+    if (get().isLoading && get().lastFetchedLocation === locationKey) {
+      return; // Avoid duplicate concurrent requests
+    }
+    
+    set({ isLoading: true, lastFetchedLocation: locationKey });
     try {
       const units = get().selectedUnits;
       const weatherData = await weatherService.getCurrentWeather(location, units);
@@ -40,14 +44,19 @@ export const useWeatherStore = create<WeatherState>((set, get) => ({
           isLoading: false 
         });
       } else {
-        set({ isLoading: false, error: "Failed to fetch weather data" });
+        // Use global error handling instead of local error state
+        useErrorStore.getState().showError(
+          "Failed to fetch weather data", 
+          "Unable to retrieve weather information. Please try again later."
+        );
+        set({ isLoading: false });
       }
     } catch (error) {
       set({ isLoading: false });
+      // Use the existing handleApiError for consistent error handling
       handleApiError(error);
     }
   },
-  
   
   setUnits: (units: 'metric' | 'imperial') => {
     const currentWeather = get().currentWeather;
@@ -75,9 +84,5 @@ export const useWeatherStore = create<WeatherState>((set, get) => ({
       selectedUnits: units,
       currentWeather: updatedWeather
     });
-  },
-  
-  clearError: () => {
-    set({ error: null });
   }
 })) 

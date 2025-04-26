@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from './layout/Layout';
 import Loader from './components/Loader/Loader';
@@ -18,7 +18,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/alerts" element={<Alerts />} />
             <Route path="/current-state" element={<CurrentState />} />
-            {/* <Route path="*" element={<NotFound />} /> */}
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Layout>
       </Suspense>

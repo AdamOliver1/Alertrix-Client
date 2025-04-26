@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import styles from './Table.module.scss';
+import styles from './DataDisplay.module.scss';
 
 interface ActionButtonsProps {
   children: ReactNode;

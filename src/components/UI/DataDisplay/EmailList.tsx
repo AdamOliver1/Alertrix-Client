@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './Table.module.scss';
+import styles from './DataDisplay.module.scss';
 
 interface EmailListProps {
   emails: string[];

@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import styles from './Table.module.scss';
+import styles from './DataDisplay.module.scss';
 
 interface IconWithTextProps {
   icon: ReactElement;

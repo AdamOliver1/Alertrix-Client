@@ -415,15 +415,6 @@
   color: var(--text-white);
 }
 
-.actionsCell {
-  display: flex;
-  gap: 0.5rem;
-}
-
-.actionButton {
-  margin-right: 0.5rem;
-}
-
 .deleteButton {
   color: var(--error) !important;
   border-color: var(--error) !important;
