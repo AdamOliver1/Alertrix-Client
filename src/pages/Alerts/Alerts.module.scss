@@ -291,17 +291,6 @@
   margin: 0;
 }
 
-// Add standalone triggered class for text only
-.triggered {
-  padding: $space-1 $space-3;
-  border-radius: 3.125rem;
-  font-size: $font-size-sm;
-  font-weight: $font-weight-medium;
-  display: inline-block;
-  background-color: $color-danger-light;
-  color: $color-danger;
-}
-
 .alertContent {
   color: var(--text-light);
 }
@@ -426,17 +415,6 @@
   color: var(--text-white);
 }
 
-.cellWithIcon {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.cellIcon {
-  color: var(--accent-teal);
-  font-size: 1rem;
-}
-
 .actionsCell {
   display: flex;
   gap: 0.5rem;
@@ -487,28 +465,6 @@
   text-align: center;
   padding: 2rem !important;
   color: var(--text-muted);
-}
-
-.triggered {
-  padding: 0.3rem 0.8rem;
-  border-radius: 3.125rem;
-  font-size: 0.85rem;
-  font-weight: 500;
-  display: inline-block;
-  background-color: rgba(230, 57, 70, 0.2);
-  color: var(--error);
-  box-shadow: 0 0 0.625rem rgba(230, 57, 70, 0.3);
-}
-
-.emailsList {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.emailItem {
-  display: inline-block;
-  font-size: 0.9rem;
 }
 
 // Modal Form
@@ -688,6 +644,7 @@
 }
 
 // No results from search state
+/* Remove the noResults styles as they're now handled by NoResults component
 .noResults {
   text-align: center;
   margin: 4rem auto;
@@ -707,4 +664,5 @@
     font-size: $font-size-lg;
     color: var(--text-light);
   }
-} 
+}
+*/ 

@@ -5,6 +5,13 @@ import { AlertStatus } from '../../../types/alert';
 import styles from '../Alerts.module.scss';
 import { getParameterName, getParameterUnit } from '../../../utils/weatherParameters';
 import Loader from '@/components/Loader/Loader';
+import { 
+  StatusBadge, 
+  IconWithText, 
+  EmailList, 
+  ActionButtons, 
+  NoResults 
+} from '../../../components/UI/DataDisplay';
 
 interface AlertsTableProps {
   alerts: AlertStatus[];
@@ -28,10 +35,11 @@ const AlertsTable: React.FC<AlertsTableProps> = ({
 
   if (!alerts || alerts.length === 0) {
     return (
-      <div className={styles.noResults}>
-        <FaSearch className={styles.noResultsIcon} />
-        <p>No matching alerts found for your search.</p>
-      </div>
+      <NoResults 
+        icon={<FaSearch />}
+        message="No matching alerts found for your search."
+        className={styles.noResults}
+      />
     );
   }
 
@@ -53,59 +61,53 @@ const AlertsTable: React.FC<AlertsTableProps> = ({
             <tr key={alert.id}>
               <td className={styles.nameCell}>{alert.name || 'Unnamed Alert'}</td>
               <td>
-                <span className={alert.isTriggered ? styles.triggered : ''}>
-                  {alert.isTriggered ? 'Triggered' : 'Not Triggered'}
-                </span>
+                <StatusBadge 
+                  isActive={alert.isTriggered}
+                  activeText="Triggered"
+                  inactiveText="Not Triggered"
+                />
               </td>
               <td>
-                <div className={styles.emailsList}>
-                  {alert.emails && alert.emails.length > 0 ? (
-                    alert.emails.map((email, index) => (
-                      <span key={index} className={styles.emailItem}>{email}</span>
-                    ))
-                  ) : (
-                    <span className={styles.emailItem}>No email recipients</span>
-                  )}
-                </div>
+                <EmailList
+                  emails={alert.emails || []}
+                />
               </td>
               <td>
-                <div className={styles.cellWithIcon}>
-                  <FaMapMarkerAlt className={styles.cellIcon} />
-                  <span>
-                    {alert.location && (alert.location.name || 
-                      `Lat: ${alert.location.lat?.toFixed(2) || '?'}, Lon: ${alert.location.lon?.toFixed(2) || '?'}`)}
-                  </span>
-                </div>
+                <IconWithText
+                  icon={<FaMapMarkerAlt />}
+                  text={alert.location && (alert.location.name || 
+                    `Lat: ${alert.location.lat?.toFixed(2) || '?'}, Lon: ${alert.location.lon?.toFixed(2) || '?'}`)}
+                />
               </td>
               <td>
-                <div className={styles.cellWithIcon}>
-                  <FaThermometerHalf className={styles.cellIcon} />
-                  <span>
-                    {alert.condition ? 
-                      `${getParameterName(alert.condition.parameter)} ${alert.condition.operator} ${alert.condition.value}${getParameterUnit(alert.condition.parameter)}` : 
-                      'Condition not specified'}
-                  </span>
-                </div>
+                <IconWithText
+                  icon={<FaThermometerHalf />}
+                  text={alert.condition ? 
+                    `${getParameterName(alert.condition.parameter)} ${alert.condition.operator} ${alert.condition.value}${getParameterUnit(alert.condition.parameter)}` : 
+                    'Condition not specified'}
+                />
               </td>
               <td className={styles.actionsCell}>
-                <Button 
-                  variant="outline"
-                  size="sm"
-                  onClick={() => onEdit(alert.id)}
-                  aria-label="Edit alert"
-                  className={styles.actionButton}
-                >
-                  Edit
-                </Button>
-                <Button 
-                  variant="outline"
-                  size="sm"
-                  onClick={() => onDelete(alert.id)}
-                  aria-label="Delete alert"
-                  className={styles.deleteButton}
-                >
-                  Delete
-                </Button>
+                <ActionButtons>
+                  <Button 
+                    variant="outline"
+                    size="sm"
+                    onClick={() => onEdit(alert.id)}
+                    aria-label="Edit alert"
+                    className={styles.actionButton}
+                  >
+                    Edit
+                  </Button>
+                  <Button 
+                    variant="outline"
+                    size="sm"
+                    onClick={() => onDelete(alert.id)}
+                    aria-label="Delete alert"
+                    className={styles.deleteButton}
+                  >
+                    Delete
+                  </Button>
+                </ActionButtons>
               </td>
             </tr>
           ))}
