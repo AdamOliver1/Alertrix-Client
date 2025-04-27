@@ -187,14 +187,17 @@ const AlertForm: React.FC<AlertFormProps> = ({
       
       if (isEditMode && alert) {
         await updateAlert(alert.id, alertData);
+        // Don't call onSuccess for edit mode since we're already updating the store
       } else {
         await createAlert(alertData);
+        // Call onSuccess only after creation to refresh the list in case of new items
+        onSuccess();
         // Reset form after successful creation (not for edit)
         resetForm();
       }
       
+      // Close the modal in both cases
       onClose();
-      onSuccess();
     } catch (err) {
       setError(err instanceof Error ? err.message : 'An error occurred');
     } finally {
