@@ -59,19 +59,8 @@ const CurrentState: React.FC = () => {
   
   const handleEvaluateConfirm = async () => {
     try {
-      const result = await evaluateAllAlerts();
-      
-      if (result) {
-        // Provide more informative messages based on whether alerts were triggered
-        const message = result.alertsTriggered
-          ? "Evaluation complete: Alerts have been triggered!"
-          : "Evaluation complete: No new alerts were triggered.";
-        
-        setEvaluationMessage(message);
-      } else {
-        setEvaluationMessage("Evaluation completed.");
-      }
-      
+      const message = await evaluateAllAlerts();
+      setEvaluationMessage(message || undefined);
       setLastUpdated(new Date());
     } catch (error) {
       setEvaluationMessage('An error occurred while evaluating alerts.');

@@ -23,30 +23,29 @@ const Alerts = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [sortByTriggered, setSortByTriggered] = useState<'asc' | 'desc' | null>(null);
   
-  // Use the alert store with the new structure
+  // Use the alert store instead of direct service calls
   const { 
-    alerts,
-    alertsById,
-    isLoading,
-    fetchAlerts,
-    selectAlert,
+    alertStatuses,
+    isLoadingStatuses,
+    fetchAlertStatuses,
+    fetchAlertById,
     selectedAlert: storeSelectedAlert,
     clearSelectedAlert,
     deleteAlert
   } = useAlertStore();
 
-  // Fetch alerts on mount and set up refresh interval
+  // Fetch alert statuses on mount and set up refresh interval
   useEffect(() => {
-    fetchAlerts();
+    fetchAlertStatuses();
     
     // Set up an interval to refresh data every 10 minutes
     const intervalId = setInterval(() => {
-      fetchAlerts();
+      fetchAlertStatuses();
     }, 600000);
     
     // Clean up the interval when component unmounts
     return () => clearInterval(intervalId);
-  }, [fetchAlerts]);
+  }, [fetchAlertStatuses]);
 
   // Update local selectedAlert when store's selectedAlert changes
   useEffect(() => {
@@ -54,9 +53,9 @@ const Alerts = () => {
       setSelectedAlert(storeSelectedAlert);
     }
   }, [storeSelectedAlert]);
-  
+
   // Filter and sort alerts
-  const filteredAndSortedAlerts = alerts
+  const filteredAndSortedAlerts = alertStatuses
     .filter(alert => 
       searchQuery === '' || 
       alert.name.toLowerCase().includes(searchQuery.toLowerCase())
@@ -76,14 +75,13 @@ const Alerts = () => {
     clearSelectedAlert(); // Clear the selected alert in the store as well
   };
 
-  const handleEditAlert = (alertId: string) => {
-    // Use selectAlert instead of making another API call
-    selectAlert(alertId);
+  const handleEditAlert = async (alertId: string) => {
+    await fetchAlertById(alertId);
     setShowForm(true);
   };
 
   const handleDeleteAlert = async (alertId: string) => {
-    const alert = alertsById[alertId];
+    const alert = alertStatuses.find(a => a.id === alertId);
     if (alert) {
       setDeleteConfirmation({
         isOpen: true,
@@ -95,6 +93,7 @@ const Alerts = () => {
 
   const confirmDelete = async () => {
     await deleteAlert(deleteConfirmation.alertId);
+    await fetchAlertStatuses();
     closeDeleteConfirmation();
   };
 
@@ -128,7 +127,7 @@ const Alerts = () => {
   };
   
   const handleRefresh = () => {
-    fetchAlerts();
+    fetchAlertStatuses();
   };
   
   const renderEmptyState = () => {
@@ -155,12 +154,12 @@ const Alerts = () => {
   };
   
   const renderContent = () => {
-    if (isLoading && alerts.length === 0) {
+    if (isLoadingStatuses) {
       return <Loader text="Loading alerts..." />;
     }
 
     // First check if there are no alerts at all
-    if (alerts.length === 0) {
+    if (alertStatuses.length === 0) {
       return renderEmptyState();
     }
 
@@ -177,7 +176,7 @@ const Alerts = () => {
           alerts={filteredAndSortedAlerts}
           onEdit={handleEditAlert}
           onDelete={handleDeleteAlert}
-          loading={isLoading}
+          loading={isLoadingStatuses}
         />
       );
   };
@@ -244,7 +243,7 @@ const Alerts = () => {
       <AlertForm 
         isOpen={showForm}
         onClose={handleFormClose}
-        onSuccess={fetchAlerts}
+        onSuccess={fetchAlertStatuses}
         alert={selectedAlert}
       />
 
